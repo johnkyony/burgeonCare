@@ -5,11 +5,33 @@
         Client List 
         <b-link href="/addClient">(Add Client)</b-link>
       </h2>
-     <b-table striped hover :items="clientList" :fields="fields">
+     <!-- <b-table striped hover :items="clientList" :fields="fields">
         <template slot="actions" slot-scope="row">
           <b-btn size="sm" @click.stop="details(row.item)">Details</b-btn>
         </template>
-      </b-table>
+      </b-table> -->
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th v-for="field in fields" scope="col">
+              {{field.label}}
+            </th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="client in clientList" >
+            <th scope="row">{{client.clientNo}}</th>
+            <td>{{client.registeredName}}</td>
+            <td>{{client.tradingName}}</td>
+            <td>{{client.companyRegistrationNumber}}</td>
+            <td>{{client.dateRegistered}}</td>
+            <td> <b-btn size="sm" @click.stop="details(client.key)">Details</b-btn></td>
+
+          </tr>
+        </tbody>
+
+      </table>
     </b-col>
   </b-row>
 </template>
@@ -61,12 +83,15 @@ export default {
           dateRegistered: doc.data().dateRegistered
           
         })
+        this.clientList.sort((a,b) => {
+          return a.clientNo - b.clientNo
+        })
       })
     })
   }, 
   methods: {
-    details (clientList){
-      router.push({ name: 'ShowClientDetails' , params: {id: clientList.key}})
+    details (key){
+      router.push({ name: 'ShowClientDetails' , params: {id: key}})
     }
   }
   

@@ -1,23 +1,20 @@
 <template>
   <b-row>
     <b-col cols="12">
-      <h2>
-       Client Details
-        <b-link href="/">(Client List)</b-link>
-      </h2>
+     
 
       <b-jumbotron>
+     
         <template slot="header">
           {{client.registeredName}}
         </template>
         <template slot="lead">
-          Client Details : <br>
-          <hr>
+          
           Client#: {{client.clientNo}} <br>
-          registeredName:  {{client.registeredName}} <br>
-          tradingName: {{client.tradingName}} <br>
-          companyRegistrationNumber: {{client.companyRegistrationNumber}} <br>
-          dateRegistered: {{client.dateRegistered}} <br>
+          registered Name:  {{client.registeredName}} <br>
+          trading Name: {{client.tradingName}} <br>
+          company Registration Number: {{client.companyRegistrationNumber}} <br>
+          date Registered: {{client.dateRegistered}} <br>
           <hr>
           Directors: <br>
           <hr>

@@ -1,14 +1,14 @@
 <template>
   <b-row>
     <b-col cols="12">
-      <h2>
+      <!-- <h2>
         Add New Client <br>
         
         <b-link href="/">(Client List)</b-link>
-      </h2>
+      </h2> -->
       <b-jumbotron>
         <b-form @submit="onSubmit">
-            Client Details : <br>
+           <h2> New Client Details </h2> <br>
           <hr>
           <b-form-group id="fieldsetHorizontal" horizontal :label-cols="4"
           breakpoint="md" label="Enter Client Number">

@@ -1,15 +1,7 @@
 <template>
   <b-row>
     <b-col cols="12">
-      <h2>
-        Client List 
-        <b-link href="/addClient">(Add Client)</b-link>
-      </h2>
-     <!-- <b-table striped hover :items="clientList" :fields="fields">
-        <template slot="actions" slot-scope="row">
-          <b-btn size="sm" @click.stop="details(row.item)">Details</b-btn>
-        </template>
-      </b-table> -->
+  
       <table class="table">
         <thead class="thead-dark">
           <tr>

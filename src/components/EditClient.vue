@@ -220,15 +220,43 @@ export default {
   data(){
     return {
       key: this.$route.params.id, 
-      client: {}
+      client: {} ,
+      ref: firebase.firestore().collection('ClientList')
     }
   },
   created(){
-    const ref = firebase.firestore().collection('ClientList')
-    .doc(this.$route.params.id)
-    ref.get().then((doc) => {
-      updateRef.set(this.client).then((docRef) => {
-                this.client.clientNo = ''
+    this.ref.doc(this.$route.params.id)
+    .get()
+    .then((doc) => {
+      if(doc.exists){
+        this.client = doc.data()
+      } else {
+        alert("No such Document")
+      }
+    })
+
+    // const ref = firebase.firestore().collection('ClientList')
+    // .doc(this.$route.params.id)
+
+    // ref.get().then((doc) => {
+    //   updateRef.set(this.client).then((docRef) => {
+     
+
+   
+    //   })
+    // })
+    // .catch((error) => 
+    // {
+    //   alert("Error adding document: " , error)
+    // })
+  },
+  methods: {
+    onSubmit(event){
+      event.preventDefault()
+      const updateRef = this.ref.doc(this.$route.params.id)
+      updateRef.set(this.client) 
+      .then((docRef) => {
+        this.client.clientNo = ''
         this.client.registeredName = ''
         this.client.tradingName = ''
         this.client.companyRegistrationNumber = ''
@@ -266,13 +294,12 @@ export default {
         this.client.faxNo = ''
         this.client.emailAddress = ''
 
-        router.push({name: 'ShowClientDetails' , params: {id: this.$route.paramas.id}})
+        router.push({name: 'ShowClientDetails' , params: {id: this.$route.params.id}})
       })
-    })
-    .catch((error) => 
-    {
-      alert("Error adding document: " , error)
-    })
+      .catch((error) =>{
+        alert("Error adding document :" , error)
+      })
+    }
   }
 }
 </script>

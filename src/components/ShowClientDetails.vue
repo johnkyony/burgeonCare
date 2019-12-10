@@ -2,7 +2,7 @@
   <b-row>
     <b-col cols="12">
       <h2>
-        Edit Client 
+       Client Details
         <b-link href="/">(Client List)</b-link>
       </h2>
 
@@ -23,19 +23,19 @@
           <hr>
           Member 1: <br>
           <hr>
-          FullName: {{client.member1FullName}} <br>
+          Full Name: {{client.member1FullName}} <br>
           Id No: {{client.member1IdNo}} <br>
           ITR No: {{client.member1ItrNo}} <br>
           <hr>
           Member 2: <br>
           <hr>
-          FullName: {{client.member2FullName}} <br>
+          Full Name: {{client.member2FullName}} <br>
           Id No: {{client.member2IdNo}} <br>
           ITR No: {{client.member2ItrNo}} <br>
           <hr>
           Member 3: <br>
           <hr>
-          FullName: {{client.member3FullName}} <br>
+          Full Name: {{client.member3FullName}} <br>
           Id No : {{client.member3IdNo}} <br>
           ITR No : {{client.member3ItrNo}} <br>
           <hr>

@@ -26,7 +26,7 @@ const routes = [
     component: AddClient
   },
   {
-    path: '/editClient',
+    path: '/editClient/:id',
     name: 'editClient',
     component: EditClient
   }

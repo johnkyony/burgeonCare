@@ -16,7 +16,7 @@
           </b-form-group>
 
           <b-form-group id="fieldsetHorizontal" horizontal
-          :label-cols = "4" breakpoint="md" label="Enter Regirered Name">
+          :label-cols = "4" breakpoint="md" label="Enter Registered Name">
             <b-form-input id="registeredName" v-model="client.registeredName"></b-form-input>
           </b-form-group>
 

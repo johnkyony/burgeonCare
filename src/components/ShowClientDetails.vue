@@ -80,6 +80,7 @@
         <hr class="my-4">
         <b-btn  variant="success" @click.stop="editClient(key)">Edit Client</b-btn>
         <b-btn variant="danger" @click.stop="deleteClient(key)">Delete Client</b-btn>
+        <b-btn variant="primary" @click.stop="fileUpload(key)">Client File Upload</b-btn>
       </b-jumbotron>
     </b-col>
   </b-row>
@@ -128,6 +129,13 @@ export default {
       .catch((error) => {
         alert("Error removing document: " , error)
       })
+    },
+    fileUpload(id){
+      router.push({
+        name: 'ClientStaticFileUpload', 
+        params: {id: id}
+      })
+
     }
   }
   

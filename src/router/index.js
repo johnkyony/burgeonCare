@@ -5,6 +5,7 @@ import ClientList from '@/components/ClientList'
 import ShowClientDetails from '@/components/ShowClientDetails'
 import AddClient from '@/components/AddClient'
 import EditClient from '@/components/EditClient'
+import ClientStaticFileUpload from "@/components/ClientStaticFileUpload"
 
 Vue.use(VueRouter)
 
@@ -29,6 +30,11 @@ const routes = [
     path: '/editClient/:id',
     name: 'editClient',
     component: EditClient
+  }, 
+  {
+    path: '/client-fileUpload/:id', 
+    name: 'ClientStaticFileUpload', 
+    component: ClientStaticFileUpload
   }
 ]
 

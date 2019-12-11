@@ -206,8 +206,10 @@
             <b-form-input id="emailAddress" v-model="client.emailAddress"></b-form-input>
           </b-form-group>
           <b-button type="submit" variant="primary">Update</b-button>
+           <b-btn variant="danger" @click.stop="backToClient()">Back</b-btn>
         </b-form>
       </b-jumbotron>
+     
     </b-col>
   </b-row>
 </template>
@@ -299,6 +301,9 @@ export default {
       .catch((error) =>{
         alert("Error adding document :" , error)
       })
+    },
+    backToClient(){
+      router.push({name: 'ShowClientDetails' , params: {id: this.$route.params.id}})
     }
   }
 }

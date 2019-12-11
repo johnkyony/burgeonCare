@@ -78,7 +78,7 @@
           Email address : {{client.emailAddress}}
         </template>
         <hr class="my-4">
-        <b-btn class="edit-btn" variant="success" @click.stop="editClient(key)">Edit Client</b-btn>
+        <b-btn  variant="success" @click.stop="editClient(key)">Edit Client</b-btn>
         <b-btn variant="danger" @click.stop="deleteClient(key)">Delete Client</b-btn>
       </b-jumbotron>
     </b-col>

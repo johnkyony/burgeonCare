@@ -1,8 +1,9 @@
 <template>
   <b-row>
     <b-col cols="12">
-  
-      <table class="table">
+        <vue-bootstrap4-table :rows="clientList" :columns="columns" :config="config" @on-select-row="details" >
+        </vue-bootstrap4-table>
+      <!-- <table class="table">
         <thead class="thead-dark">
           <tr>
             <th v-for="field in fields" scope="col">
@@ -23,7 +24,7 @@
           </tr>
         </tbody>
 
-      </table>
+      </table> -->
     </b-col>
   </b-row>
 </template>
@@ -31,36 +32,113 @@
 <script>
 import firebase from '../Firebase'
 import router from '../router'
+import VueBootstrap4Table from 'vue-bootstrap4-table'
 export default {
   name: 'ClientList',
   data(){
     return{ 
-      fields: [
-        
-         {
-          label: 'Client #' , sortable: true , 'class': 'text-left'
-
-        },
-         {
-          label: 'Registered Name' , sortable: true 
-        },
-         {
-          label: 'Trading Name' , sortable: true 
-        },
+      columns: [
         {
-          label: 'Company Registration #' , sortable: true
-        },
-         {
-          label: 'Date Registered'  , sortable: true
-        },
-        { label: 'Action' , 'class' : 'text-center'},
+          label: "Client #" , 
+          name: "clientNo" , 
+          filter: {
+            type: "simple" ,
+            placeholder: "Enter Client No"
+          },
+          sort: true,
+          uniqueId: true
+        }, 
+        {
+          label: "Registered Name", 
+          name: "registeredName",
+          filter: {
+            type: "simple", 
+            placeholder: "Enter Registered Name", 
+
+          }, 
+          sort: true
+        }, 
+        {
+          label: "Trading Name",
+          name: "tradingName",
+          filter: {
+            type: "simple", 
+            placeholder: "Enter Trading Name"
+          },
+          sort: true
+        }, 
+        {
+          label: "Company Registration #",
+          name: "companyRegistrationNumber",
+          filter: {
+            type: "simple", 
+            placeholder: "Enter Company Registration Number"
+          } , 
+          sort: true 
+        }, 
+        {
+          label: "Date Registered", 
+          name: "dateRegistered", 
+          
+        }
+
+      ] ,
+      config: {
+        // checkbox_rows: true, 
+        rows_selectable: true, 
+        card_title: "Burgeon Care Client List",
+        per_page: 20,
         
-      ],
+
+      },
+
+      
+      // fields: [
+        
+      //    {
+      //     label: 'Client #' , name: "Client" , sortable: true , 'class': 'text-left' , 
+      //       filter: {
+      //         type: "simple",
+      //         placeholder: "Client No"
+      //       }
+      //     }
+
+      // ,
+      //    {
+      //     label: 'Registered Name' , name: "registered Name" , sortable: true , filter: {
+      //       type: "simple",
+      //       placeholder: "Enter Registered Name"
+
+      //     }
+      //   },
+      //    {
+      //     label: 'Trading Name' , sortable: true , filter: {
+      //       type: "simple",
+      //       placeholder: "Enter Trading Name"
+      //     }
+      //   },
+      //   {
+      //     label: 'Company Registration #' , sortable: true
+      //   },
+      //    {
+      //     label: 'Date Registered'  , sortable: true
+      //   },
+      //   { label: 'Action' , 'class' : 'text-center'},
+        
+      // ],
+      // config: {
+      //   checkbox_rows: true,
+      //   rows_selectable: true , 
+      //   card_title: "Vue Bootstrap 4 advanced table"
+      // },
      
       clientList: [],
       errors: [],
       ref: firebase.firestore().collection('ClientList'),
     }
+  },
+  components: {
+    VueBootstrap4Table
   },
   created(){
     this.ref.onSnapshot((querySnapshot) => {
@@ -82,8 +160,12 @@ export default {
     })
   }, 
   methods: {
-    details (key){
-      router.push({ name: 'ShowClientDetails' , params: {id: key}})
+    details(payload){
+     
+        console.log(payload)
+        router.push({ name: 'ShowClientDetails' , params: {id: payload.selected_item.key}})
+      
+      
     }
   }
   

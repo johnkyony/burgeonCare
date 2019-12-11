@@ -30,7 +30,7 @@
           </b-form-group>
           <b-form-group id="fieldsetHorizontal" horizontal
           :label-cols = "4" breakpoint="md" label="Enter Date Registered">
-            <b-form-input id="dateRegistered" v-model="client.dateRegistered"></b-form-input>
+           <date-picker v-model="client.dateRegistered" :config="options"></date-picker>
           </b-form-group>
           <hr>
           Directors: <br>
@@ -217,13 +217,19 @@
 <script>
 import firebase from '../Firebase'
 import router from '../router'
+import datePicker from 'vue-bootstrap-datetimepicker'
+import 'pc-bootstrap4-datetimepicker/build/css/bootstrap-datetimepicker.css'
 export default {
   name: 'editClient',
   data(){
     return {
       key: this.$route.params.id, 
       client: {} ,
-      ref: firebase.firestore().collection('ClientList')
+      ref: firebase.firestore().collection('ClientList'),
+        options: {
+        format: 'DD/MM/YYYY',
+        useCurrent: false
+      }
     }
   },
   created(){
@@ -251,6 +257,9 @@ export default {
     // {
     //   alert("Error adding document: " , error)
     // })
+  },
+  components:{
+    datePicker
   },
   methods: {
     onSubmit(event){

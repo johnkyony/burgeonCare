@@ -1,13 +1,10 @@
 <template>
   <b-row>
     <b-col cols="12">
-      <h2>
-        Edit Client Details
-        <router-link :to="{name: 'ShowClientDetails' , params: {id: key}}">(Show Client Details)</router-link>
-      </h2>
-            <b-jumbotron>
+     
+      <b-jumbotron>
         <b-form @submit="onSubmit">
-            Client Details : <br>
+          Edit Client Details : <br>
           <hr>
           <b-form-group id="fieldsetHorizontal" horizontal :label-cols="4"
           breakpoint="md" label="Enter Client Number">

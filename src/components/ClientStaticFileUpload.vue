@@ -21,6 +21,7 @@
           </div>
         </div>
         <b-progress :value="idUploadValue" :max="max" show-progress animated></b-progress>
+        
        
       </div>
     </div>
@@ -70,6 +71,10 @@
       </div>
     </div>
   </div>
+  <div class="col mb-4">
+    <b-btn variant="danger" @click.stop="backToClient">Back To Client</b-btn>
+  </div>
+  
   <!-- <div class="col mb-4">
     <div class="card">
       <img src="#" class="card-img-top" alt="#">
@@ -102,13 +107,19 @@
 </template>
 <script>
 import firebase from '../Firebase';
+import router from '../router'
 
 export default {
   name: 'Upload',
   data(){
 	return{
 
-
+      ref: firebase.firestore().collection('ClientStaticFiles'),
+      databaseFileCopy: {
+        clientId: this.$route.params.id , 
+        fileCategory: null, 
+        imageUrl: null
+      },
       imageData: null,
       idPicture: null,
       cpicPicture: null , 
@@ -153,19 +164,35 @@ export default {
         // this.uploadValue=100;
         storageRef.snapshot.ref.getDownloadURL().then((url)=>{
           // this.picture =url;
+          this.databaseFileCopy.fileCategory = categoryType
           if(categoryType === 'id'){
             this.idPicture= url
             this.idUploadValue = 0;
+            
+            this.databaseFileCopy.imageUrl = this.idPicture
         } else if (categoryType === 'cpic'){
-           this.cpicPicture= url;
+            this.cpicPicture= url;
+           this.databaseFileCopy.imageUrl =  this.cpicPicture;
            this.cpicUploadValue = 0;
         } else {
           this.financialStatementPicture = url;
+          this.databaseFileCopy.imageUrl = this.financialStatementPicture 
           this.financialStatementUploadValue = 0;
         }
         });
+        this.ref.add(this.databaseFileCopy)
+        console.log(this.databaseFileCopy)
+        // .then((docRef) => {
+        //   this.databaseFileCopy.imageUrl = null
+        //   this.databaseFileCopy.fileCategory = null
+
+        // })
       }
       );
+    },
+    
+    backToClient(){
+      router.push({name: 'ShowClientDetails' , params: {id: this.$route.params.id}})
     }
 
   }

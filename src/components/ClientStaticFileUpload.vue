@@ -118,6 +118,7 @@ export default {
       databaseFileCopy: {
         clientId: this.$route.params.id , 
         fileCategory: null, 
+        imageName: null,
         imageUrl: null
       },
       imageData: null,
@@ -140,6 +141,7 @@ export default {
       this.idPicture=null;
       this.cpicPicture= null 
       this.financialStatementPicture = null 
+      this.databaseFileCopy.imageName = this.imageData.name
       const storageRef=firebase.storage().ref(`${this.imageData.name}`).put(this.imageData);
       storageRef.on(`state_changed`,snapshot=>{
         if(categoryType === 'id'){

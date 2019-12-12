@@ -179,9 +179,10 @@ export default {
           this.databaseFileCopy.imageUrl = this.financialStatementPicture 
           this.financialStatementUploadValue = 0;
         }
-        });
-        this.ref.add(this.databaseFileCopy)
+         this.ref.add(this.databaseFileCopy)
         console.log(this.databaseFileCopy)
+        });
+       
         // .then((docRef) => {
         //   this.databaseFileCopy.imageUrl = null
         //   this.databaseFileCopy.fileCategory = null

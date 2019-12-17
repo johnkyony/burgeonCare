@@ -81,6 +81,7 @@
         <b-btn  variant="success" @click.stop="editClient(key)">Edit Client</b-btn>
         <b-btn variant="danger" @click.stop="deleteClient(key)">Delete Client</b-btn>
         <b-btn variant="primary" @click.stop="fileUpload(key)">Client File Upload</b-btn>
+         <b-btn  @click.stop="ViewFiles(key)">View Client Files</b-btn>
       </b-jumbotron>
     </b-col>
   </b-row>
@@ -136,6 +137,12 @@ export default {
         params: {id: id}
       })
 
+    }, 
+    ViewFiles(id){
+      router.push({
+        name: 'ViewClientStaticFile',
+        params: {id: id}
+      })
     }
   }
   

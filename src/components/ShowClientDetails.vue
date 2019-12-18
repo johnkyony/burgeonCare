@@ -1,10 +1,11 @@
 <template>
   <b-row>
+   
     <b-col cols="12">
      
-
       <b-jumbotron>
-     
+       
+      <b-alert :show='showAlert' dismissible @input="handleAlertDismiss">You have no Client file uploaded</b-alert>
         <template slot="header">
           {{client.registeredName}}
         </template>
@@ -88,9 +89,10 @@
       moveDisabled
       :visible="visible"
       :imgs="convertedArray"
-      :index="index"
+      
       @hide="handleHide"
     ></vue-easy-lightbox>
+   
     </b-col>
   </b-row>
 </template>
@@ -104,7 +106,8 @@ export default {
   data(){
     return{
 
-      visible: false
+      visible: false,
+      showAlert: false
     }
   },
   
@@ -167,11 +170,22 @@ export default {
       //   name: 'ViewClientStaticFile',
       //   params: {id: id}
       // })
-      this.visible = true
+      if(this.filteredArray.length != 0){
+        this.visible = true
+      }else {
+        console.log('empty')
+        
+         this.showAlert = true
+
+      }
+      
 
     },
     handleHide(){
       this.visible = false 
+    },
+    handleAlertDismiss(payload){
+      this.showAlert = false
     }
 
   },

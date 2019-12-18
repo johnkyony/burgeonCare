@@ -1,55 +1,22 @@
 <template>
-  <!-- <div >
-    <div v-for="item in filteredArray">
-      <b-card
-  
-    overlay
-    :img-src="item.imageUrl"
-    img-alt="Card Image"
-    text-variant="white"
-    title="Image Overlay"
-    sub-title="Subtitle"
-  >
-    <b-card-text>
-      Some quick example text to build on the card and make up the bulk of the card's content.
-    </b-card-text>
-  </b-card>
+<div>
+  <vue-easy-lightbox escDisabled moveDisabled :visible="true" :imgs="convertedArray" :index="index">
 
-    </div>
-  
-</div> -->
-<div class="gallery">
-  <div class="gallery-panel" v-for=" item in filteredArray" :key="item.key">
-    <img :src="item.imageUrl" alt="" @click="lightbox(item.key)">
-
-  </div>
-
+  </vue-easy-lightbox>
 </div>
 </template>
-<style>
-  .gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
-    grid-gap: 1rem;
-    max-width: 80rem;
-    margin: 5rem auto;
-    padding: 0 5rem;
-  }  .gallery-panel img {
-    width: 100%;
-    height: 22vw;
-    object-fit: cover;
-    border-radius: 0.75rem;
-  }
-</style>
+
 
 <script>
 
 import firebase from '../Firebase'
 import router from '../router'
+import VueEasyLightbox from 'vue-easy-lightbox'
 export default {
   data(){
     return {
       items: [],
+      imgs: [],
       ref: firebase.firestore().collection('ClientStaticFiles'),
     }
   },
@@ -75,7 +42,15 @@ export default {
   computed: {
     filteredArray (){
       return this.items.filter(item => item.clientId === this.$route.params.id)
+    },
+    convertedArray(){
+    const imgUrl = []
+    this.filteredArray.forEach((imgs) =>{
+      imgUrl.push(imgs.imageUrl)
+      })
+      return imgUrl
     }
+    
   },
   methods: {
     lightbox(id){
@@ -85,6 +60,9 @@ export default {
       })
 
     }
+  },
+  components: {
+    VueEasyLightbox
   }
   
 }

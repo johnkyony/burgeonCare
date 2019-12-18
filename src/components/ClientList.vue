@@ -132,32 +132,41 @@ export default {
       //   card_title: "Vue Bootstrap 4 advanced table"
       // },
      
-      clientList: [],
-      errors: [],
-      ref: firebase.firestore().collection('ClientList'),
+      // clientList: [],
+      
     }
   },
   components: {
     VueBootstrap4Table
   },
-  created(){
-    this.ref.onSnapshot((querySnapshot) => {
-      this.clientList = []
-      querySnapshot.forEach((doc) => {
-        this.clientList.push({
-          key: doc.id ,
-          clientNo: doc.data().clientNo,
-          registeredName: doc.data().registeredName,
-          tradingName: doc.data().tradingName,
-          companyRegistrationNumber: doc.data().companyRegistrationNumber,
-          dateRegistered: doc.data().dateRegistered
-          
-        })
-        this.clientList.sort((a,b) => {
+  computed:{
+   clientList(){
+     return this.$store.state.clientList.sort((a,b) => {
           return a.clientNo - b.clientNo
         })
-      })
-    })
+   }
+  },
+  created(){
+    
+    
+    // this.ref.onSnapshot((querySnapshot) => {
+    //   this.clientList = []
+    //   querySnapshot.forEach((doc) => {
+    //     this.clientList.push({
+    //       key: doc.id ,
+    //       clientNo: doc.data().clientNo,
+    //       registeredName: doc.data().registeredName,
+    //       tradingName: doc.data().tradingName,
+    //       companyRegistrationNumber: doc.data().companyRegistrationNumber,
+    //       dateRegistered: doc.data().dateRegistered
+          
+    //     })
+    //     this.clientList.sort((a,b) => {
+    //       return a.clientNo - b.clientNo
+    //     })
+        
+    //   })
+    // })
   }, 
   methods: {
     details(payload){

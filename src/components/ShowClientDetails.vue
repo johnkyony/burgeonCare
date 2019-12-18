@@ -10,6 +10,7 @@
     ></vue-easy-lightbox>
   <div>
     <div class="container emp-profile">
+        <b-alert :show='showAlert' dismissible @input="handleAlertDismiss">You have no Client file uploaded</b-alert>
             <form method="post">
                 <div class="row">
                     <div class="col-md-4">

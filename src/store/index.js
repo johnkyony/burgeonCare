@@ -62,10 +62,11 @@ export default new Vuex.Store({
          menuItems.push({
            key: doc.id , 
            clientNo: doc.data().clientNo,
-           registeredName: doc.data().tradingName,
+           registeredName: doc.data().registeredName,
            companyRegistrationNumber: doc.data().companyRegistrationNumber,
            dateRegistered: doc.data().dateRegistered , 
-           fullData: doc.data()
+           fullData: doc.data(),
+           tradingName: doc.data().tradingName
          })
          commit('setClientList', menuItems)
        })

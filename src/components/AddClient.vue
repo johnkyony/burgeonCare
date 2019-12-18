@@ -1,5 +1,6 @@
 <template>
-  <b-row>
+ <div class="container emp-profile">
+<b-row>
     <b-col cols="12">
       <!-- <h2>
         Add New Client <br>
@@ -212,6 +213,8 @@
       </b-jumbotron>
     </b-col>
   </b-row>
+ </div>
+  
 </template>
 
 <script>

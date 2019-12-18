@@ -1,4 +1,5 @@
 <template>
+<div  class="container emp-profile">
   <b-row>
     <b-col cols="12">
      
@@ -209,6 +210,9 @@
      
     </b-col>
   </b-row>
+
+</div>
+  
 </template>
 
 <script>

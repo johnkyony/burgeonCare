@@ -1,5 +1,6 @@
 <template>
-  <b-row>
+  <div class="container emp-profile">
+    <b-row>
     <b-col cols="12">
         <vue-bootstrap4-table :rows="clientList" :columns="columns" :config="config" @on-select-row="details" >
         </vue-bootstrap4-table>
@@ -27,6 +28,9 @@
       </table> -->
     </b-col>
   </b-row>
+    
+  </div>
+  
 </template>
 
 <script>

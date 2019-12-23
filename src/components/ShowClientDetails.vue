@@ -15,11 +15,11 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile-img">
-                            <img src="gs://burgean-care.appspot.com/burgeonEmailSignature.png" alt=""/>
-                            <div class="file btn btn-lg btn-primary">
+                            <img src="https://firebasestorage.googleapis.com/v0/b/burgean-care.appspot.com/o/burgeonEmailSignature.png?alt=media&token=d092c065-74dc-47ae-ac2f-fb39463a5e3a" alt=""/>
+                            <!-- <div class="file btn btn-lg btn-primary">
                                 Change Photo
                                 <input type="file" name="file"/>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                     <div class="col-md-6">

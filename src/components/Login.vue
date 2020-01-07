@@ -14,13 +14,13 @@
              <h1 class="login-main-text-label ">Welcome back</h1>
             <div class="form-group">
               <label class="login-main-text-label "> Email Address</label>
-              <input type="text" class="form-control" placeholder="you@email.com">
+              <input type="text" class="form-control" placeholder="you@email.com" v-model="loginForm.email">
             </div>
             <div class="form-group">
               <label class="login-main-text-label "> Password</label>
-              <input type="password" class="form-control" placeholder="******">
+              <input type="password" class="form-control" placeholder="******"  v-model="loginForm.password">
             </div>
-            <button class="btn btn-primary">Login</button>
+            <button class="btn btn-primary" @click="loginButtonPressed">Login</button>
             <button class="btn btn-secondary" @click="togglePasswordReset">Forgot Password</button>
           </form>
           <form v-else >
@@ -61,8 +61,25 @@ export default {
   methods: {
     togglePasswordReset(){
       this.showLoginForm = !this.showLoginForm
+    },
+    async loginButtonPressed(){
+      try {
+        const { user} = await firebase.auth().signInWithEmailAndPassword(this.loginForm.email , this.loginForm.password)
+      }catch(error){
+        console.log(error)
+      }
     }
 
+  },
+  created() {
+    firebase.auth().onAuthStateChanged(userAuth => {
+      if(userAuth){
+        firebase.auth().currentUser.getIdTokenResult()
+        .then(tokenResult => {
+          console.log(tokenResult.claims)
+        })
+      }
+    })
   }
 }
 </script>

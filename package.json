@@ -10,6 +10,8 @@
     "bootstrap-vue": "^2.1.0",
     "core-js": "^3.4.3",
     "firebase": "^7.5.2",
+    "firebase-admin": "^8.9.0",
+    "firebase-functions": "^3.3.0",
     "vue": "^2.6.10",
     "vue-bootstrap-datetimepicker": "^5.0.1",
     "vue-bootstrap4-table": "^1.1.11",

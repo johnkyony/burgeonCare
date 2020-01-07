@@ -9,6 +9,7 @@ import ClientStaticFileUpload from "@/components/ClientStaticFileUpload"
 import ViewClientStaticFile from "@/components/ViewClientStaticFile"
 import LightBox from '@/components/LightBox'
 import Login from '@/components/Login'
+import Register from '@/components/Register'
 Vue.use(VueRouter)
 
 const routes = [
@@ -16,42 +17,68 @@ const routes = [
   {
     path: '/',
     name: 'ClientList',
-    component: ClientList
+    component: ClientList,
+    meta: {
+      auth: true
+    }
   },
   {
     path: '/showClientDetails/:id',
     name: 'ShowClientDetails',
-    component: ShowClientDetails
+    component: ShowClientDetails,
+    meta: {
+      auth: true
+    }
   },
   {
     path: '/addClient',
     name: 'AddClient',
-    component: AddClient
+    component: AddClient,
+    meta: {
+      auth: true
+    }
   },
   {
     path: '/editClient/:id',
     name: 'editClient',
-    component: EditClient
+    component: EditClient,
+    meta: {
+      auth: true
+    }
   }, 
   {
     path: '/client-fileUpload/:id', 
     name: 'ClientStaticFileUpload', 
-    component: ClientStaticFileUpload
+    component: ClientStaticFileUpload,
+    meta: {
+      auth: true
+    }
   }, 
-  {
-    path: '/view-clientStaticFile/:id',
-    name: 'ViewClientStaticFile',
-    component: ViewClientStaticFile
-  },
-  {
-    path: '/lightbot/:id',
-    name: 'LightBox',
-    component: LightBox
-  },
+  // {
+  //   path: '/view-clientStaticFile/:id',
+  //   name: 'ViewClientStaticFile',
+  //   component: ViewClientStaticFile
+  // },
+  // {
+  //   path: '/lightbot/:id',
+  //   name: 'LightBox',
+  //   component: LightBox
+  // },
   {
     path: '/login',
     name: 'Login',
-    component: Login
+    component: Login,
+    meta: {
+      guest: true
+    }
+  }, 
+  {
+    path: '/userRegister',
+    name: 'Register',
+    component: Register,
+    meta: {
+      guest: true
+    }
   }
 ]
 

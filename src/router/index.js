@@ -8,7 +8,7 @@ import EditClient from '@/components/EditClient'
 import ClientStaticFileUpload from "@/components/ClientStaticFileUpload"
 import ViewClientStaticFile from "@/components/ViewClientStaticFile"
 import LightBox from '@/components/LightBox'
-
+import Login from '@/components/Login'
 Vue.use(VueRouter)
 
 const routes = [
@@ -47,6 +47,11 @@ const routes = [
     path: '/lightbot/:id',
     name: 'LightBox',
     component: LightBox
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: Login
   }
 ]
 

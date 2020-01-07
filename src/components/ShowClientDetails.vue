@@ -442,7 +442,7 @@ export default {
 }
 </script>
 
-<style>
+<style >
   /* .jumbotron {
     padding: 2rem;
   }

@@ -4,14 +4,15 @@ import firestore from 'firebase/firestore'
 const settings = {timestampsInSnapshots: true};
 
 const config = {
-  apiKey: "AIzaSyDOJosGBTfYWr5dtQIDufDqbmcOLeYFvfg",
-  authDomain: "burgean-care.firebaseapp.com",
-  databaseURL: "https://burgean-care.firebaseio.com",
-  projectId: "burgean-care",
-  storageBucket: "burgean-care.appspot.com",
-  messagingSenderId: "254371107667",
-  appId: "1:254371107667:web:dc51d4ff5d81da847587a6",
-  measurementId: "G-274D4K1NDC"
+  apiKey: "AIzaSyAleAg5zURbzzGFyM_rPh0zNUPG4AsEt_0",
+  authDomain: "burgeoncarebackup.firebaseapp.com",
+  databaseURL: "https://burgeoncarebackup.firebaseio.com",
+  projectId: "burgeoncarebackup",
+  storageBucket: "burgeoncarebackup.appspot.com",
+  messagingSenderId: "1051008715582",
+  appId: "1:1051008715582:web:02893d280274961308ba6f",
+  measurementId: "G-FQRNS7TW4S"
+
 };
 
 firebase.initializeApp(config)
